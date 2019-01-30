@@ -1,2 +1,2 @@
-＃练习golang怎么执行壳命令
-#
+＃练习golang怎么执行shell命令
+
