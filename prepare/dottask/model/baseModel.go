@@ -2,6 +2,7 @@ package model
 
 import (
 	"fmt"
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/gpmgo/gopm/modules/log"
 	"github.com/jinzhu/gorm"
 	"goCron/prepare/dottask/pkg/setting"
@@ -20,18 +21,21 @@ type dbConfig struct {
 	tablePrefix string
 }
 
+type BaseMode struct {
+}
+
 /*
 连接默认数据库 default_database role_total  ..._central库
 */
 func init() {
-	db = conectDb("default_database")
-	db_role = conectDb("role_total")
+	db = ConectDb("default_database")
+	db_role = ConectDb("role_total")
 }
 
 /**
 连接数据库
 */
-func conectDb(dbType string) *gorm.DB {
+func ConectDb(dbType string) *gorm.DB {
 
 	config := getDbConfig(dbType)
 	dbConnect, err := gorm.Open(config.dbType, fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8&parseTime=True&loc=Local",
@@ -55,7 +59,7 @@ func conectDb(dbType string) *gorm.DB {
 /*
 根据配置获取数据库实例
 */
-func getDb(config interface{}) {
+func (baaseMode *BaseMode) getDb(config interface{}) {
 }
 
 /*
