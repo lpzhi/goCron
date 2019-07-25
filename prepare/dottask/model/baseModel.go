@@ -45,6 +45,7 @@ func ConectDb(dbType string) *gorm.DB {
 		config.dbName))
 
 	if err != nil {
+
 		log.Fatal("conect db err:%v", err)
 	}
 
@@ -85,3 +86,10 @@ func getDbConfig(dbype string) dbConfig {
 func CloseDB() {
 	defer db.Close()
 }
+
+//检查 更新数据 或者添加
+//func Treating(data, chData, upData interface{}, table string) {
+//	for v, k := range data {
+//
+//	}
+//}
